@@ -1,0 +1,47 @@
+package hus.oop.search;
+
+public class SelectionSort implements Sorter {
+    @Override
+    public void sort(double[] data, boolean order) {
+        if (order) {
+            sortAscending(data);
+        } 
+        else {
+            sortDescending(data);
+        }
+    }
+
+    private void sortAscending(double[] data) {
+
+        int n = data.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            int minIdx = i;
+            for (int j = i + 1; j < n; j++) {
+                if (data[j] < data[minIdx]) {
+                    minIdx = j;
+                }
+            }
+            double temp = data[minIdx];
+            data[minIdx] = data[i];
+            data[i] = temp;
+        }
+    }
+
+    private void sortDescending(double[] data) {
+
+        int n = data.length;
+        
+        for (int i = 0; i < n - 1; i++) {
+            int maxIdx = i;
+            for (int j = i + 1; j < n; j++) {
+                if (data[j] > data[maxIdx]) {
+                    maxIdx = j;
+                }
+            }
+            double temp = data[maxIdx];
+            data[maxIdx] = data[i];
+            data[i] = temp;
+        }
+    }
+}
